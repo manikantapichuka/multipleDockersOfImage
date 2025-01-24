@@ -1,0 +1,10 @@
+docker-compose up 		--> start the existing containers
+docker-compose stop     	--> stop containers without removing them
+docker-compose up --build	--> rebuild the image
+docker-compose down		--> clean up stopped containers
+
+docker-compose build 		--> Build a new image
+docker-compose up <servicename> --> To run only a particular service
+
+
+pyarmor gen -O opfileordir -i inputfileordir

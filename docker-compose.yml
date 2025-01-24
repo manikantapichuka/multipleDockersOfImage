@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  sql-scripts-app:
+    build:
+      context: .                       # Build from the current directory
+      args:
+        APP_DIR: sql_scripts           # Build argument for selecting the app directory
+        APP_PORT: 8003                 # Port for sql-scripts service
+    container_name: sql-scripts-container
+    ports:
+      - "8003:8003"                    # Map host port 8003 to container port 8003
+    environment:
+      - APP_PORT=8003
+    command: python /app/sql_scripts/run.py # Command to start the FastAPI app
+
+  server-scripts-app:
+    build:
+      context: .                       # Build from the current directory
+      args:
+        APP_DIR: server_scripts        # Build argument for selecting the app directory
+        APP_PORT: 8004                 # Port for server-scripts service
+    container_name: server-scripts-container
+    ports:
+      - "8004:8004"                    # Map host port 8004 to container port 8004
+    environment:
+      - APP_PORT=8004
+    command: python /app/dist/server_scripts/run.py # Command to start the obfuscated app
